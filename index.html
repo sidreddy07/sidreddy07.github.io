@@ -1,1 +1,35 @@
-"Hello world!" 
+<!DOCTYPE html>
+<head>
+    <title>PayPal Credit Merchant</title>
+</head>
+<body>
+<script>
+        function setHostName() {
+           var queryParam = window.location.search + window.location.hash;
+           var host = queryParam.substring(10);
+           document.getElementById('mini-browser').setAttribute('href', host);
+        };
+    </script>
+<div class='container'>
+    <div class='row product'>
+        <div class='col-md-4'>
+            <h3>PayPal Credit Merchant using mini-browser</h3>
+            <p>
+                <a id='mini-browser'></a>
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+        window.paypalCheckoutReady = function() {
+          paypal.checkout.setup('6XF3MPZBZV6HU', {
+            locale: 'en_US',
+            environment: 'stage',
+            container: ['mini-browser']
+          });
+        }
+        setHostName();
+    </script>
+<script async src='//www.paypalobjects.com/api/checkout.js'></script>
+</body>
+</html>
